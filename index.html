@@ -3,125 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Marc Louie Jay Aniez — Virtual Assistant & Administrative Systems Builder. 14 projects across 5 specializations. Available for remote work.">
 <title>Marc Louie Jay Aniez — Virtual Assistant Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--navy:#0f2744;--teal:#0d9e75;--teal-light:#e1f5ee;--gold:#b87d2e;--gold-light:#faeeda;--slate:#4a5568;--border:rgba(0,0,0,0.08);--bg:#f8f7f4;--white:#ffffff;}
+:root{
+  --navy:#0f2744;--teal:#0d9e75;--teal-light:#e1f5ee;
+  --gold-light:#faeeda;--slate:#4a5568;
+  --border:rgba(0,0,0,0.08);--bg:#f8f7f4;
+}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--navy);}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy);letter-spacing:-0.3px;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);letter-spacing:-0.3px;white-space:nowrap;}
 .nav-links{display:flex;gap:0;}
-.nav-link{font-size:13px;font-weight:400;color:var(--slate);padding:8px 14px;cursor:pointer;border-radius:6px;transition:all 0.15s;text-decoration:none;border:none;background:none;font-family:'DM Sans',sans-serif;}
+.nav-link{font-size:13px;color:var(--slate);padding:8px 12px;cursor:pointer;border-radius:6px;border:none;background:none;font-family:'DM Sans',sans-serif;transition:all 0.15s;}
 .nav-link:hover{color:var(--navy);background:rgba(0,0,0,0.04);}
 .nav-link.active{color:var(--teal);font-weight:500;}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all 0.25s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* mobile menu */
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:white;border-bottom:0.5px solid var(--border);z-index:199;flex-direction:column;padding:0.5rem 0;}
+.mobile-menu.open{display:flex;}
+.mobile-link{font-size:15px;color:var(--slate);padding:14px 1.5rem;cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;text-align:left;width:100%;transition:background 0.1s;}
+.mobile-link:hover{background:var(--bg);}
+.mobile-link.active{color:var(--teal);font-weight:500;}
+
+/* ── PAGES ── */
 .page{display:none;}
 .page.active{display:block;}
-.hero{padding:5rem 2rem 4rem;max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:#0f6e56;font-size:12px;font-weight:500;letter-spacing:0.5px;padding:5px 12px;border-radius:20px;margin-bottom:1.5rem;}
+
+/* ── HERO ── */
+.hero{padding:3.5rem 1.5rem 3rem;max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2.5rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:#0f6e56;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;margin-bottom:1.25rem;}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;letter-spacing:-1px;color:var(--navy);margin-bottom:1rem;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;letter-spacing:-1px;color:var(--navy);margin-bottom:1rem;}
 .hero h1 em{font-style:italic;color:var(--teal);}
-.hero p{font-size:16px;line-height:1.7;color:var(--slate);max-width:480px;margin-bottom:2rem;}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{background:var(--navy);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:11px 24px;border-radius:8px;cursor:pointer;border:none;transition:all 0.2s;}
+.hero-sub{font-size:15px;line-height:1.7;color:var(--slate);max-width:480px;margin-bottom:1.75rem;}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-primary{background:var(--navy);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:11px 22px;border-radius:8px;cursor:pointer;border:none;transition:all 0.2s;white-space:nowrap;}
 .btn-primary:hover{background:#1a3a5c;transform:translateY(-1px);}
-.btn-outline{background:transparent;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;padding:11px 24px;border-radius:8px;cursor:pointer;border:1px solid rgba(15,39,68,0.25);transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 22px;border-radius:8px;cursor:pointer;border:1px solid rgba(15,39,68,0.25);transition:all 0.2s;white-space:nowrap;}
 .btn-outline:hover{background:rgba(15,39,68,0.05);}
-.hero-visual{width:200px;height:200px;background:var(--navy);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex-shrink:0;}
-.hero-initials{font-family:'DM Serif Display',serif;font-size:52px;color:white;line-height:1;}
-.hero-role{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;}
-.skills-bar{background:var(--navy);padding:1.5rem 2rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
-.skill-item{display:flex;align-items:center;gap:8px;}
-.skill-icon{width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
-.skill-label{font-size:13px;color:rgba(255,255,255,0.75);font-weight:300;}
-.section{padding:4rem 2rem;max-width:900px;margin:0 auto;}
-.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.75rem;}
-.section-title{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy);letter-spacing:-0.5px;margin-bottom:2.5rem;}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.service-card{background:white;padding:1.75rem;transition:background 0.15s;}
+.hero-visual{width:180px;height:180px;background:var(--navy);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;}
+.hero-initials{font-family:'DM Serif Display',serif;font-size:48px;color:white;line-height:1;}
+.hero-role{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* ── SKILLS BAR ── */
+.skills-bar{background:var(--navy);padding:1.25rem 1.5rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.skill-item{display:flex;align-items:center;gap:7px;}
+.skill-icon{width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.skill-label{font-size:12px;color:rgba(255,255,255,0.75);font-weight:300;white-space:nowrap;}
+
+/* ── SECTIONS ── */
+.section{padding:3rem 1.5rem;max-width:900px;margin:0 auto;}
+.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.6rem;}
+.section-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--navy);letter-spacing:-0.5px;margin-bottom:2rem;}
+
+/* ── SERVICES GRID ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.service-card{background:white;padding:1.5rem;transition:background 0.15s;}
 .service-card:hover{background:#f9fffe;}
-.service-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--teal);opacity:0.4;margin-bottom:1rem;}
-.service-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;}
+.service-num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--teal);opacity:0.4;margin-bottom:0.75rem;}
+.service-title{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:0.6rem;}
 .service-items{list-style:none;}
-.service-items li{font-size:12px;color:var(--slate);padding:3px 0;line-height:1.5;}
-.service-items li::before{content:'—';margin-right:6px;color:var(--teal);}
-.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem;}
-.cat-tab{font-size:12px;font-weight:500;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all 0.15s;border:1px solid var(--border);background:white;color:var(--slate);font-family:'DM Sans',sans-serif;}
+.service-items li{font-size:12px;color:var(--slate);padding:2px 0;line-height:1.5;}
+.service-items li::before{content:'—';margin-right:5px;color:var(--teal);}
+
+/* ── CATEGORY TABS ── */
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;}
+.cat-tab{font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;cursor:pointer;transition:all 0.15s;border:1px solid var(--border);background:white;color:var(--slate);font-family:'DM Sans',sans-serif;}
 .cat-tab:hover{border-color:var(--teal);color:var(--teal);}
 .cat-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;}
+
+/* ── PROJECT CARDS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
 .project-card{background:white;border-radius:12px;border:0.5px solid var(--border);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;}
 .project-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08);}
-.project-thumb{height:120px;display:flex;align-items:center;justify-content:center;}
-.project-thumb-text{font-family:'DM Serif Display',serif;font-size:13px;color:white;text-align:center;padding:0 1rem;opacity:0.9;line-height:1.4;}
-.project-body{padding:1.25rem;}
-.project-cat{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:0.5rem;}
-.project-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:0.5rem;line-height:1.4;}
-.project-desc{font-size:12px;color:var(--slate);line-height:1.6;margin-bottom:1rem;}
-.project-tags{display:flex;gap:6px;flex-wrap:wrap;}
-.tag{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--bg);color:var(--slate);border:0.5px solid var(--border);}
+.project-thumb{height:110px;display:flex;align-items:center;justify-content:center;padding:0 1rem;}
+.project-thumb-text{font-family:'DM Serif Display',serif;font-size:13px;color:white;text-align:center;opacity:0.9;line-height:1.4;}
+.project-body{padding:1.1rem;}
+.project-cat{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:0.4rem;}
+.project-title{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:0.4rem;line-height:1.4;}
+.project-desc{font-size:12px;color:var(--slate);line-height:1.6;margin-bottom:0.9rem;}
+.project-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg);color:var(--slate);border:0.5px solid var(--border);}
+
+/* ── PROJECT DETAIL ── */
 .project-detail{display:none;}
 .project-detail.active{display:block;}
-.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--slate);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;padding:0;margin-bottom:2rem;transition:color 0.15s;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--slate);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;padding:0;margin-bottom:1.5rem;transition:color 0.15s;}
 .back-btn:hover{color:var(--navy);}
-.detail-cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:0.75rem;}
-.detail-title{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy);margin-bottom:1rem;letter-spacing:-0.5px;line-height:1.2;}
-.detail-desc{font-size:15px;color:var(--slate);line-height:1.75;max-width:620px;margin-bottom:1.5rem;}
-.detail-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem;}
-.detail-tag{font-size:12px;padding:5px 14px;border-radius:20px;background:var(--bg);color:var(--slate);border:0.5px solid var(--border);}
-.highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:2.5rem;}
-.highlight-card{background:white;border:0.5px solid var(--border);border-radius:10px;padding:1rem 1.25rem;}
-.highlight-val{font-family:'DM Serif Display',serif;font-size:1.75rem;color:var(--navy);}
-.highlight-label{font-size:12px;color:var(--slate);margin-top:2px;}
-.detail-sections{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.detail-section{background:white;border:0.5px solid var(--border);border-radius:10px;padding:1.5rem;}
-.detail-section h3{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:0.5px solid var(--border);}
-.detail-item{font-size:13px;color:var(--slate);padding:6px 0;border-bottom:0.5px solid var(--bg);line-height:1.5;}
+.detail-cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:0.6rem;}
+.detail-title{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--navy);margin-bottom:0.9rem;letter-spacing:-0.5px;line-height:1.2;}
+.detail-desc{font-size:14px;color:var(--slate);line-height:1.75;max-width:620px;margin-bottom:1.25rem;}
+.detail-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:2rem;}
+.detail-tag{font-size:12px;padding:5px 13px;border-radius:20px;background:var(--bg);color:var(--slate);border:0.5px solid var(--border);}
+.highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:2rem;}
+.highlight-card{background:white;border:0.5px solid var(--border);border-radius:10px;padding:0.9rem 1rem;}
+.highlight-val{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--navy);}
+.highlight-label{font-size:11px;color:var(--slate);margin-top:2px;}
+.detail-sections{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.detail-section{background:white;border:0.5px solid var(--border);border-radius:10px;padding:1.25rem;}
+.detail-section h3{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:0.9rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--border);}
+.detail-item{font-size:12px;color:var(--slate);padding:5px 0;border-bottom:0.5px solid var(--bg);line-height:1.5;}
 .detail-item:last-child{border-bottom:none;}
 .detail-item strong{color:var(--navy);font-weight:500;}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
-.about-bio p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:1rem;}
-.about-bio p:first-child::first-letter{font-family:'DM Serif Display',serif;font-size:3rem;float:left;line-height:0.8;margin-right:8px;color:var(--navy);}
-.tools-section{background:white;border:0.5px solid var(--border);border-radius:12px;padding:1.75rem;}
-.tools-section h3{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:1.25rem;}
-.tool-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--bg);}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+.about-bio p{font-size:14px;color:var(--slate);line-height:1.8;margin-bottom:1rem;}
+.about-bio p:first-child::first-letter{font-family:'DM Serif Display',serif;font-size:2.8rem;float:left;line-height:0.8;margin-right:8px;color:var(--navy);}
+.tools-section{background:white;border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;}
+.tools-section h3{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:1rem;}
+.tool-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--bg);}
 .tool-row:last-child{border-bottom:none;}
-.tool-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
-.tool-name{font-size:13px;color:var(--navy);flex:1;}
-.tool-level{font-size:11px;color:var(--slate);background:var(--bg);padding:2px 10px;border-radius:10px;}
-.journey-block{margin-top:2rem;padding:1.5rem;background:var(--navy);border-radius:12px;}
-.journey-block h3{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:1rem;letter-spacing:1px;text-transform:uppercase;}
-.journey-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:1rem;}
+.tool-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.tool-name{font-size:12px;color:var(--navy);flex:1;}
+.tool-level{font-size:11px;color:var(--slate);background:var(--bg);padding:2px 9px;border-radius:10px;white-space:nowrap;}
+.journey-block{margin-top:1.5rem;padding:1.25rem;background:var(--navy);border-radius:12px;}
+.journey-block h3{font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);margin-bottom:0.9rem;letter-spacing:1px;text-transform:uppercase;}
+.journey-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:0.9rem;}
 .journey-step:last-child{margin-bottom:0;}
-.journey-year{font-family:'DM Serif Display',serif;font-size:13px;color:var(--teal);width:40px;flex-shrink:0;margin-top:1px;}
-.journey-text{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.5;}
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
-.contact-cta h2{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--navy);margin-bottom:1rem;line-height:1.2;}
-.contact-cta p{font-size:15px;color:var(--slate);line-height:1.7;margin-bottom:1.5rem;}
-.contact-links{display:flex;flex-direction:column;gap:10px;}
-.contact-link{display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border:0.5px solid var(--border);border-radius:10px;font-size:13px;color:var(--navy);text-decoration:none;transition:border-color 0.2s,background 0.2s;}
+.journey-year{font-family:'DM Serif Display',serif;font-size:12px;color:var(--teal);width:38px;flex-shrink:0;margin-top:1px;}
+.journey-text{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;}
+.strengths-wrap{background:white;border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.25rem;}
+.strengths-wrap h3{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:1rem;}
+.strengths{display:flex;flex-wrap:wrap;gap:7px;}
+.strength-tag{font-size:12px;padding:5px 13px;border-radius:20px;background:var(--teal-light);color:#0f6e56;border:0.5px solid #9fe1cb;}
+
+/* ── CONTACT ── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+.contact-cta h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--navy);margin-bottom:0.9rem;line-height:1.2;}
+.contact-cta p{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;}
+.contact-links{display:flex;flex-direction:column;gap:9px;}
+.contact-link{display:flex;align-items:center;gap:12px;padding:11px 14px;background:white;border:0.5px solid var(--border);border-radius:10px;font-size:13px;color:var(--navy);text-decoration:none;transition:border-color 0.2s,background 0.2s;}
 .contact-link:hover{border-color:var(--teal);background:#f6fdfb;}
-.contact-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.avail-card{background:var(--navy);border-radius:12px;padding:2rem;}
-.avail-card h3{font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;}
-.avail-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid rgba(255,255,255,0.08);}
+.contact-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.avail-card{background:var(--navy);border-radius:12px;padding:1.75rem;}
+.avail-card h3{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem;}
+.avail-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:0.5px solid rgba(255,255,255,0.08);gap:1rem;}
 .avail-row:last-child{border-bottom:none;}
-.avail-label{font-size:13px;color:rgba(255,255,255,0.7);}
-.avail-value{font-size:13px;font-weight:500;color:white;}
-.avail-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#0f6e56;background:var(--teal-light);padding:3px 10px;border-radius:10px;margin-top:1.5rem;}
+.avail-label{font-size:12px;color:rgba(255,255,255,0.7);}
+.avail-value{font-size:12px;font-weight:500;color:white;text-align:right;}
+.avail-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#0f6e56;background:var(--teal-light);padding:3px 10px;border-radius:10px;margin-top:1.25rem;}
 .avail-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
-footer{background:var(--navy);padding:2rem;text-align:center;margin-top:4rem;}
+
+/* ── SERVICES PAGE ── */
+.services-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.service-page-card{background:white;border:0.5px solid var(--border);border-radius:12px;padding:1.75rem;}
+.service-page-num{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.9rem;}
+.service-page-title{font-size:16px;font-weight:500;color:var(--navy);margin-bottom:0.6rem;}
+.service-page-desc{font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1rem;}
+.service-page-deliverables{font-size:12px;font-weight:500;margin-bottom:0.5rem;}
+.service-page-list{list-style:none;}
+.service-page-list li{font-size:13px;color:var(--slate);padding:3px 0;}
+.service-full-width{grid-column:1/-1;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:1.75rem;text-align:center;margin-top:3rem;}
 footer p{font-size:12px;color:rgba(255,255,255,0.4);}
 footer span{color:var(--teal);}
-@media(max-width:640px){
-  .hero{grid-template-columns:1fr;gap:2rem;}
-  .hero-visual{width:120px;height:120px;}
-  .hero-initials{font-size:32px;}
-  .about-grid,.contact-wrap,.detail-sections{grid-template-columns:1fr;}
-  .nav-link{padding:8px 10px;font-size:12px;}
+
+/* ════════════════════════════
+   TABLET — max-width: 768px
+════════════════════════════ */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{display:none;}
+
+  .hero{grid-template-columns:1fr;gap:1.5rem;padding:2.5rem 1.25rem 2rem;text-align:center;}
+  .hero-badge{justify-content:center;}
+  .hero-sub{margin:0 auto 1.5rem;}
+  .hero-actions{justify-content:center;}
+  .hero-visual{width:140px;height:140px;margin:0 auto;}
+  .hero-initials{font-size:38px;}
+
+  .skills-bar{gap:1rem;padding:1rem 1.25rem;}
+  .skill-label{font-size:11px;}
+
+  .section{padding:2.5rem 1.25rem;}
+  .section-title{font-size:1.5rem;margin-bottom:1.5rem;}
+
+  .services-grid{grid-template-columns:1fr 1fr;}
+
+  .projects-grid{grid-template-columns:1fr 1fr;}
+
+  .about-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .detail-sections{grid-template-columns:1fr;}
+  .services-page-grid{grid-template-columns:1fr;}
+  .service-full-width{grid-column:1;}
+}
+
+/* ════════════════════════════
+   MOBILE — max-width: 480px
+════════════════════════════ */
+@media(max-width:480px){
+  nav{padding:0 1rem;}
+  .nav-logo{font-size:15px;}
+
+  .hero{padding:2rem 1rem 1.75rem;}
+  .hero h1{font-size:1.9rem;}
+  .hero-visual{width:110px;height:110px;}
+  .hero-initials{font-size:30px;}
+  .hero-role{font-size:9px;}
+  .btn-primary,.btn-outline{font-size:13px;padding:10px 18px;}
+
+  .skills-bar{gap:0.75rem;padding:1rem;}
+  .skill-item{gap:5px;}
+  .skill-icon{width:22px;height:22px;}
+  .skill-label{font-size:10px;}
+
+  .section{padding:2rem 1rem;}
+  .section-title{font-size:1.4rem;}
+
+  .services-grid{grid-template-columns:1fr;}
+
+  .projects-grid{grid-template-columns:1fr;}
+
+  .cat-tabs{gap:6px;}
+  .cat-tab{font-size:11px;padding:6px 11px;}
+
+  .highlights{grid-template-columns:1fr 1fr;}
+  .highlight-val{font-size:1.4rem;}
+
+  .detail-title{font-size:1.4rem;}
+
+  .avail-card{padding:1.25rem;}
+  .avail-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  .avail-value{text-align:left;}
+
+  footer{padding:1.25rem;}
+}
+
+/* ════════════════════════════
+   SMALL MOBILE — max-width: 360px
+════════════════════════════ */
+@media(max-width:360px){
+  .hero h1{font-size:1.65rem;}
+  .hero-actions{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-outline{width:100%;text-align:center;}
+  .highlights{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -136,15 +269,26 @@ footer span{color:var(--teal);}
     <button class="nav-link" onclick="showPage('about')">About</button>
     <button class="nav-link" onclick="showPage('contact')">Contact</button>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HOME -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-link active" onclick="showPage('home');closeMenu()">Home</button>
+  <button class="mobile-link" onclick="showPage('projects');closeMenu()">Projects</button>
+  <button class="mobile-link" onclick="showPage('services');closeMenu()">Services</button>
+  <button class="mobile-link" onclick="showPage('about');closeMenu()">About</button>
+  <button class="mobile-link" onclick="showPage('contact');closeMenu()">Contact</button>
+</div>
+
+<!-- ═══ HOME ═══ -->
 <div id="page-home" class="page active">
   <div class="hero">
     <div>
-      <div class="hero-badge"><span class="hero-dot"></span> Available for remote work</div>
+      <div class="hero-badge"><span class="hero-dot"></span>Available for remote work</div>
       <h1>Virtual Assistant &amp; <em>Administrative</em> Systems Builder</h1>
-      <p>Helping businesses stay organized and efficient through workflow systems, data management, executive support, and e-learning administration.</p>
+      <p class="hero-sub">Helping businesses stay organized and efficient through workflow systems, data management, executive support, and e-learning administration.</p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="showPage('projects')">View My Projects</button>
         <button class="btn-outline" onclick="showPage('contact')">Get in Touch</button>
@@ -155,40 +299,43 @@ footer span{color:var(--teal);}
       <div class="hero-role">Virtual Assistant</div>
     </div>
   </div>
+
   <div class="skills-bar">
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Google Workspace</span></div>
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M2 6h12M6 6v7" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">Spreadsheet Systems</span></div>
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Calendar Management</span></div>
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h7M3 12h5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Documentation</span></div>
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="8.5" y="2" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="2" y="8.5" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">Data Entry</span></div>
-    <div class="skill-item"><div class="skill-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13V7l5-5 5 5v6H3z" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M6.5 13V10h3v3" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">LMS Administration</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Google Workspace</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M2 6h12M6 6v7" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">Spreadsheets</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Calendar Mgmt</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h7M3 12h5" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div><span class="skill-label">Documentation</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="8.5" y="2" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="2" y="8.5" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">Data Entry</span></div>
+    <div class="skill-item"><div class="skill-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 13V7l5-5 5 5v6H3z" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/><path d="M6.5 13V10h3v3" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/></svg></div><span class="skill-label">LMS Admin</span></div>
   </div>
+
   <div class="section">
     <div class="section-label">What I do</div>
     <div class="section-title">Core competencies</div>
     <div class="services-grid">
-      <div class="service-card"><div class="service-num">01</div><div class="service-title">General Virtual Assistance</div><ul class="service-items"><li>Email triage &amp; SOP design</li><li>Template library creation</li><li>Task dashboard management</li><li>Follow-up tracking systems</li></ul></div>
-      <div class="service-card"><div class="service-num">02</div><div class="service-title">Administrative Support</div><ul class="service-items"><li>Cloud filing architecture</li><li>Meeting minutes &amp; documentation</li><li>Executive calendar management</li><li>Multi-timezone scheduling</li></ul></div>
-      <div class="service-card"><div class="service-num">03</div><div class="service-title">Executive Assistance</div><ul class="service-items"><li>Executive briefing packs</li><li>Inbox zero systems</li><li>Travel &amp; event coordination</li><li>Draft-on-behalf workflows</li></ul></div>
-      <div class="service-card"><div class="service-num">04</div><div class="service-title">Data Entry Specialist</div><ul class="service-items"><li>Data cleanup &amp; standardization</li><li>Accuracy self-tracking</li><li>Grade &amp; attendance trackers</li><li>Multi-sheet system design</li></ul></div>
-      <div class="service-card"><div class="service-num">05</div><div class="service-title">E-Learning Administration</div><ul class="service-items"><li>Student onboarding guides</li><li>Academic records management</li><li>LMS course module structuring</li><li>Google Classroom-ready formats</li></ul></div>
+      <div class="service-card"><div class="service-num">01</div><div class="service-title">General VA</div><ul class="service-items"><li>Email triage &amp; SOPs</li><li>Template libraries</li><li>Task dashboards</li><li>Follow-up tracking</li></ul></div>
+      <div class="service-card"><div class="service-num">02</div><div class="service-title">Admin Support</div><ul class="service-items"><li>Cloud filing systems</li><li>Meeting minutes</li><li>Calendar management</li><li>Timezone scheduling</li></ul></div>
+      <div class="service-card"><div class="service-num">03</div><div class="service-title">Executive Assistance</div><ul class="service-items"><li>Briefing packs</li><li>Inbox zero systems</li><li>Travel coordination</li><li>Draft-on-behalf</li></ul></div>
+      <div class="service-card"><div class="service-num">04</div><div class="service-title">Data Entry</div><ul class="service-items"><li>Data cleanup</li><li>Accuracy tracking</li><li>Grade trackers</li><li>Multi-sheet systems</li></ul></div>
+      <div class="service-card"><div class="service-num">05</div><div class="service-title">E-Learning Admin</div><ul class="service-items"><li>Student onboarding</li><li>Academic records</li><li>LMS course structure</li><li>Google Classroom</li></ul></div>
     </div>
   </div>
+
   <div class="section" style="padding-top:0">
     <div class="section-label">Portfolio highlights</div>
     <div class="section-title">Featured projects</div>
     <div class="projects-grid">
-      <div class="project-card" onclick="showProjectDetail('gva-sop')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Faculty Communication Workflow SOP</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA</div><div class="project-title">Communication Workflow SOP</div><div class="project-desc">9-section SOP covering full email lifecycle with escalation matrix.</div><div class="project-tags"><span class="tag">Google Docs</span><span class="tag">SOP</span><span class="tag">Workflow</span></div></div></div>
-      <div class="project-card" onclick="showProjectDetail('jea-brief')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">C-Suite Executive Briefing Pack</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA</div><div class="project-title">Executive Briefing Document</div><div class="project-desc">5-day CEO prep pack with meeting notes, pending decisions, and action items.</div><div class="project-tags"><span class="tag">Executive Support</span><span class="tag">C-Suite</span></div></div></div>
-      <div class="project-card" onclick="showProjectDetail('ea-records')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Academic Records Management System</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning Admin</div><div class="project-title">Academic Records Tracker</div><div class="project-desc">150+ students, 4 grading periods, automated flags. ~30% time saved.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">VLOOKUP</span><span class="tag">IF()</span></div></div></div>
-      <div class="project-card" onclick="showProjectDetail('aa-filing')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Google Drive Folder Architecture</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin Assistant</div><div class="project-title">Digital Filing System</div><div class="project-desc">30-person school, 6 departments, 50% faster document retrieval.</div><div class="project-tags"><span class="tag">Google Drive</span><span class="tag">Naming Conventions</span></div></div></div>
+      <div class="project-card" onclick="showProjectDetail('gva-sop')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Faculty Communication Workflow SOP</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA</div><div class="project-title">Communication Workflow SOP</div><div class="project-desc">9-section SOP covering full email lifecycle with escalation matrix.</div><div class="project-tags"><span class="tag">Google Docs</span><span class="tag">SOP</span></div></div></div>
+      <div class="project-card" onclick="showProjectDetail('jea-brief')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">C-Suite Executive Briefing Pack</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA</div><div class="project-title">Executive Briefing Document</div><div class="project-desc">5-day CEO prep pack with meeting notes and pending decisions.</div><div class="project-tags"><span class="tag">C-Suite</span><span class="tag">Decision Log</span></div></div></div>
+      <div class="project-card" onclick="showProjectDetail('ea-records')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Academic Records Management</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning Admin</div><div class="project-title">Academic Records Tracker</div><div class="project-desc">150+ students, 4 grading periods, ~30% time saved.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">VLOOKUP</span></div></div></div>
+      <div class="project-card" onclick="showProjectDetail('aa-filing')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Google Drive Folder Architecture</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin Assistant</div><div class="project-title">Digital Filing System</div><div class="project-desc">30-person school, 6 departments, 50% faster retrieval.</div><div class="project-tags"><span class="tag">Google Drive</span><span class="tag">Naming</span></div></div></div>
     </div>
-    <div style="text-align:center;margin-top:2rem;"><button class="btn-outline" onclick="showPage('projects')">View all 14 projects →</button></div>
+    <div style="text-align:center;margin-top:1.5rem;"><button class="btn-outline" onclick="showPage('projects')">View all 14 projects →</button></div>
   </div>
   <footer><p>Built by <span>Marc Louie Jay Aniez</span> · Virtual Assistant Portfolio · 2026</p></footer>
 </div>
 
-<!-- PROJECTS -->
+<!-- ═══ PROJECTS ═══ -->
 <div id="page-projects" class="page">
   <div id="projects-list">
     <div class="section">
@@ -197,26 +344,26 @@ footer span{color:var(--teal);}
       <div class="cat-tabs">
         <button class="cat-tab active" onclick="filterProjects('all',this)">All (14)</button>
         <button class="cat-tab" onclick="filterProjects('gva',this)">General VA</button>
-        <button class="cat-tab" onclick="filterProjects('aa',this)">Admin Assistant</button>
+        <button class="cat-tab" onclick="filterProjects('aa',this)">Admin</button>
         <button class="cat-tab" onclick="filterProjects('jea',this)">Junior EA</button>
-        <button class="cat-tab" onclick="filterProjects('ea',this)">E-Learning Admin</button>
+        <button class="cat-tab" onclick="filterProjects('ea',this)">E-Learning</button>
         <button class="cat-tab" onclick="filterProjects('des',this)">Data Entry</button>
       </div>
       <div class="projects-grid" id="projects-grid">
-        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-sop')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Communication SOP</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · Project 1</div><div class="project-title">Faculty Communication Workflow SOP</div><div class="project-desc">9-section SOP covering email triage, prioritization, escalation paths, and weekly reporting for a 30+ member institution.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">SOP</span><span class="tag">Escalation Matrix</span></div></div></div>
-        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-templates')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Email Template Library</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · Project 2</div><div class="project-title">Email Template Library</div><div class="project-desc">5 professionally written templates — follow-up, meeting scheduling, status update, info request, and apology — each with subject lines and tone guidance.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">5 Templates</span><span class="tag">Client-facing</span></div></div></div>
-        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-dashboard')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Task Management Dashboard</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · Project 3</div><div class="project-title">Weekly Task Management Dashboard</div><div class="project-desc">3-tab Google Sheets system tracking 15–20 tasks with priority tiers, dropdown status, and automated completion rate formulas.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">Conditional Formatting</span></div></div></div>
-        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-filing')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Digital Filing Architecture</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin Assistant · Project 1</div><div class="project-title">Digital Filing System</div><div class="project-desc">Google Drive folder architecture for 30-person school: 6 departments, 2 utility folders, full naming convention and access permission matrix.</div><div class="project-tags"><span class="tag">Google Drive</span><span class="tag">Word Doc</span><span class="tag">Naming Conventions</span></div></div></div>
-        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-minutes')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Meeting Minutes Template</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin Assistant · Project 2</div><div class="project-title">Meeting Minutes — Faculty Council</div><div class="project-desc">Standardized minutes template capturing agenda, decisions, and 7 action items with named owners, deadlines, and status tracking.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">Action Items</span><span class="tag">Signature Block</span></div></div></div>
-        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-calendar')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">5-Day Executive Calendar</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin Assistant · Project 3</div><div class="project-title">Calendar Management — 5-Day Schedule</div><div class="project-desc">Mock CEO calendar with 8 meetings, 4 focus blocks, and 2 cross-timezone conflict resolutions (PHT/SGT and PHT/PST).</div><div class="project-tags"><span class="tag">Google Calendar</span><span class="tag">Timezone</span><span class="tag">Buffer Rules</span></div></div></div>
-        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-brief')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">Executive Briefing Pack</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · Project 1</div><div class="project-title">Executive Briefing Document</div><div class="project-desc">Weekly CEO briefing pack with 5-day overview, meeting prep notes per meeting, 5 pending decisions, and carried-over action items.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">C-Suite</span><span class="tag">Decision Log</span></div></div></div>
-        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-inbox')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">Inbox Zero System</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · Project 2</div><div class="project-title">Inbox Zero System</div><div class="project-desc">Gmail label architecture with 5 triage categories, 15 sub-labels, response SLAs, and 7-step draft-on-behalf protocol.</div><div class="project-tags"><span class="tag">Gmail</span><span class="tag">5-Category Triage</span><span class="tag">SLA</span></div></div></div>
-        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-travel')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">2-Day Business Trip Itinerary</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · Project 3</div><div class="project-title">Travel &amp; Event Coordination Plan</div><div class="project-desc">Full 2-day Cebu–Manila business trip with contingency notes per logistics item and a 12-item pre-departure checklist.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">Contingency Planning</span></div></div></div>
-        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-onboarding')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Student Onboarding Guide</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning Admin · Project 1</div><div class="project-title">Student Onboarding Guide</div><div class="project-desc">Complete welcome packet: 8-step checklist, platform navigation, submission rules, communication norms, and 10-item FAQ.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">LMS</span><span class="tag">10-Item FAQ</span></div></div></div>
-        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-records')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Academic Records Tracker</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning Admin · Project 2</div><div class="project-title">Academic Records Management System</div><div class="project-desc">8-tab Google Sheets tracker for 150+ students across 4 grading periods with automated status flags and summary dashboard.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">VLOOKUP</span><span class="tag">COUNTIF</span></div></div></div>
-        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-lms')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">LMS Course Module Structure</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning Admin · Project 3</div><div class="project-title">LMS Course Module Structure</div><div class="project-desc">4-week ENG201 course plan with 12 learning objectives, 8 graded tasks, 150 total points — Google Classroom/Moodle/Canvas ready.</div><div class="project-tags"><span class="tag">LMS Design</span><span class="tag">Google Classroom</span><span class="tag">Moodle</span></div></div></div>
-        <div class="project-card" data-cat="des" onclick="showProjectDetail('des-cleanup')"><div class="project-thumb" style="background:#1c1010;"><div class="project-thumb-text">Before &amp; After Data Cleanup</div></div><div class="project-body"><div class="project-cat" style="color:#a32d2d;">Data Entry · Project 1</div><div class="project-title">Student Records Data Cleanup</div><div class="project-desc">200-row audit: 47 formatting errors fixed, 12 duplicates removed, 3 fields standardized. ~40% reduction in future errors.</div><div class="project-tags"><span class="tag">Excel</span><span class="tag">PROPER()</span><span class="tag">TRIM()</span><span class="tag">Change Log</span></div></div></div>
-        <div class="project-card" data-cat="des" onclick="showProjectDetail('des-accuracy')"><div class="project-thumb" style="background:#1c1010;"><div class="project-thumb-text">30-Day Accuracy Self-Assessment</div></div><div class="project-body"><div class="project-cat" style="color:#a32d2d;">Data Entry · Project 2</div><div class="project-title">Data Entry Accuracy Log</div><div class="project-desc">30-day self-assessment across 4,750+ records with 99.2% accuracy rate and error root cause analysis.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">COUNTIF</span><span class="tag">Error Analysis</span></div></div></div>
+        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-sop')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Communication SOP</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · P1</div><div class="project-title">Faculty Communication Workflow SOP</div><div class="project-desc">9-section SOP covering email triage, prioritization, escalation paths, and weekly reporting.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">SOP</span><span class="tag">Escalation</span></div></div></div>
+        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-templates')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Email Template Library</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · P2</div><div class="project-title">Email Template Library</div><div class="project-desc">5 professionally written templates with subject lines and tone guidance.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">5 Templates</span></div></div></div>
+        <div class="project-card" data-cat="gva" onclick="showProjectDetail('gva-dashboard')"><div class="project-thumb" style="background:#0f2744;"><div class="project-thumb-text">Task Dashboard</div></div><div class="project-body"><div class="project-cat" style="color:#0d9e75;">General VA · P3</div><div class="project-title">Weekly Task Management Dashboard</div><div class="project-desc">3-tab Google Sheets system with priority tiers and auto completion rate.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">Formulas</span></div></div></div>
+        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-filing')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Filing Architecture</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin · P1</div><div class="project-title">Digital Filing System</div><div class="project-desc">Google Drive folder architecture: 6 departments, naming conventions, access matrix.</div><div class="project-tags"><span class="tag">Google Drive</span><span class="tag">Word Doc</span></div></div></div>
+        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-minutes')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Meeting Minutes</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin · P2</div><div class="project-title">Meeting Minutes — Faculty Council</div><div class="project-desc">Standardized template capturing agenda, decisions, and 7 action items.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">Action Items</span></div></div></div>
+        <div class="project-card" data-cat="aa" onclick="showProjectDetail('aa-calendar')"><div class="project-thumb" style="background:#2a1f0d;"><div class="project-thumb-text">Executive Calendar</div></div><div class="project-body"><div class="project-cat" style="color:#854f0b;">Admin · P3</div><div class="project-title">Calendar Management — 5-Day Schedule</div><div class="project-desc">Mock CEO calendar: 8 meetings, 4 focus blocks, 2 timezone conflict resolutions.</div><div class="project-tags"><span class="tag">Google Calendar</span><span class="tag">Timezone</span></div></div></div>
+        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-brief')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">Executive Briefing</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · P1</div><div class="project-title">Executive Briefing Document</div><div class="project-desc">Weekly CEO briefing: 5-day overview, meeting preps, pending decisions, action items.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">C-Suite</span></div></div></div>
+        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-inbox')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">Inbox Zero System</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · P2</div><div class="project-title">Inbox Zero System</div><div class="project-desc">Gmail label architecture: 5 triage categories, 15 sub-labels, SLAs, draft-on-behalf.</div><div class="project-tags"><span class="tag">Gmail</span><span class="tag">5-Category</span></div></div></div>
+        <div class="project-card" data-cat="jea" onclick="showProjectDetail('jea-travel')"><div class="project-thumb" style="background:#1a3a5c;"><div class="project-thumb-text">Travel Itinerary</div></div><div class="project-body"><div class="project-cat" style="color:#185fa5;">Junior EA · P3</div><div class="project-title">Travel &amp; Event Coordination Plan</div><div class="project-desc">Full 2-day Cebu–Manila itinerary with contingency notes and 12-item checklist.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">Contingency</span></div></div></div>
+        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-onboarding')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Student Onboarding</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning · P1</div><div class="project-title">Student Onboarding Guide</div><div class="project-desc">Welcome packet: 8-step checklist, platform nav, submission rules, 10-item FAQ.</div><div class="project-tags"><span class="tag">Word Doc</span><span class="tag">LMS</span></div></div></div>
+        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-records')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">Academic Records</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning · P2</div><div class="project-title">Academic Records Management System</div><div class="project-desc">8-tab tracker: 150+ students, 4 periods, automated flags, summary dashboard.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">VLOOKUP</span></div></div></div>
+        <div class="project-card" data-cat="ea" onclick="showProjectDetail('ea-lms')"><div class="project-thumb" style="background:#0f3520;"><div class="project-thumb-text">LMS Module Structure</div></div><div class="project-body"><div class="project-cat" style="color:#0f6e56;">E-Learning · P3</div><div class="project-title">LMS Course Module Structure</div><div class="project-desc">4-week ENG201 plan: 12 objectives, 8 tasks, 150 pts — Classroom/Moodle/Canvas ready.</div><div class="project-tags"><span class="tag">LMS Design</span><span class="tag">Moodle</span></div></div></div>
+        <div class="project-card" data-cat="des" onclick="showProjectDetail('des-cleanup')"><div class="project-thumb" style="background:#1c1010;"><div class="project-thumb-text">Data Cleanup</div></div><div class="project-body"><div class="project-cat" style="color:#a32d2d;">Data Entry · P1</div><div class="project-title">Student Records Data Cleanup</div><div class="project-desc">200-row audit: 47 errors fixed, 12 duplicates removed, ~40% future error reduction.</div><div class="project-tags"><span class="tag">Excel</span><span class="tag">PROPER()</span></div></div></div>
+        <div class="project-card" data-cat="des" onclick="showProjectDetail('des-accuracy')"><div class="project-thumb" style="background:#1c1010;"><div class="project-thumb-text">Accuracy Log</div></div><div class="project-body"><div class="project-cat" style="color:#a32d2d;">Data Entry · P2</div><div class="project-title">Data Entry Accuracy Log</div><div class="project-desc">30-day self-assessment across 4,750+ records with 99.2% accuracy rate.</div><div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">COUNTIF</span></div></div></div>
       </div>
     </div>
   </div>
@@ -229,30 +376,30 @@ footer span{color:var(--teal);}
   <footer><p>Built by <span>Marc Louie Jay Aniez</span> · Virtual Assistant Portfolio · 2026</p></footer>
 </div>
 
-<!-- SERVICES -->
+<!-- ═══ SERVICES ═══ -->
 <div id="page-services" class="page">
   <div class="section">
     <div class="section-label">What I offer</div>
     <div class="section-title">Services</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
-      <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:2rem;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0d9e75;margin-bottom:1rem;">01</div><div style="font-size:17px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;">General Virtual Assistance</div><p style="font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;">SOP creation, email management, task tracking dashboards, communication workflow design, and template library development.</p><div style="font-size:12px;color:#0d9e75;font-weight:500;">Starting deliverables:</div><ul style="list-style:none;margin-top:0.5rem;"><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Inbox triage SOP with escalation matrix</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Email template library (5+ templates)</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Google Sheets task dashboard</li></ul></div>
-      <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:2rem;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#854f0b;margin-bottom:1rem;">02</div><div style="font-size:17px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;">Administrative Support</div><p style="font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;">Cloud filing architecture, meeting documentation, executive calendar management, cross-timezone scheduling, and process documentation.</p><div style="font-size:12px;color:#854f0b;font-weight:500;">Starting deliverables:</div><ul style="list-style:none;margin-top:0.5rem;"><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Google Drive folder system design</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Meeting minutes template + samples</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ 5-day executive calendar with logic docs</li></ul></div>
-      <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:2rem;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#185fa5;margin-bottom:1rem;">03</div><div style="font-size:17px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;">Executive Assistance</div><p style="font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;">C-suite briefing preparation, inbox zero systems with draft-on-behalf workflows, travel coordination with contingency planning.</p><div style="font-size:12px;color:#185fa5;font-weight:500;">Starting deliverables:</div><ul style="list-style:none;margin-top:0.5rem;"><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Weekly executive briefing packs</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Gmail label system + SLA framework</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Full travel itinerary with contingencies</li></ul></div>
-      <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:2rem;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0f6e56;margin-bottom:1rem;">04</div><div style="font-size:17px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;">E-Learning Administration</div><p style="font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;">Student onboarding materials, LMS course structure design, academic records tracking — compatible with Google Classroom, Moodle, and Canvas.</p><div style="font-size:12px;color:#0f6e56;font-weight:500;">Starting deliverables:</div><ul style="list-style:none;margin-top:0.5rem;"><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Student welcome packet with FAQ</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ Multi-tab academic records tracker</li><li style="font-size:13px;color:var(--slate);padding:4px 0;">→ 4-week LMS module structure doc</li></ul></div>
-      <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:2rem;grid-column:1/-1;"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a32d2d;margin-bottom:1rem;">05</div><div style="font-size:17px;font-weight:500;color:var(--navy);margin-bottom:0.75rem;">Data Entry &amp; Records Management</div><p style="font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:1.25rem;">Data cleanup and standardization, accuracy tracking, multi-sheet grade and attendance systems with automated dashboards.</p><div style="display:flex;gap:1.5rem;flex-wrap:wrap;"><div style="font-size:13px;color:var(--slate);">→ 200-row data audit with change log</div><div style="font-size:13px;color:var(--slate);">→ 30-day accuracy log (99.2% avg)</div><div style="font-size:13px;color:var(--slate);">→ Grade + attendance tracker dashboard</div></div></div>
+    <div class="services-page-grid">
+      <div class="service-page-card"><div class="service-page-num" style="color:#0d9e75;">01</div><div class="service-page-title">General Virtual Assistance</div><p class="service-page-desc">SOP creation, email management, task tracking dashboards, communication workflow design, and template library development.</p><div class="service-page-deliverables" style="color:#0d9e75;">Starting deliverables:</div><ul class="service-page-list"><li>→ Inbox triage SOP with escalation matrix</li><li>→ Email template library (5+ templates)</li><li>→ Google Sheets task dashboard</li></ul></div>
+      <div class="service-page-card"><div class="service-page-num" style="color:#854f0b;">02</div><div class="service-page-title">Administrative Support</div><p class="service-page-desc">Cloud filing architecture, meeting documentation, executive calendar management, cross-timezone scheduling, and process documentation.</p><div class="service-page-deliverables" style="color:#854f0b;">Starting deliverables:</div><ul class="service-page-list"><li>→ Google Drive folder system design</li><li>→ Meeting minutes template + samples</li><li>→ 5-day executive calendar with logic docs</li></ul></div>
+      <div class="service-page-card"><div class="service-page-num" style="color:#185fa5;">03</div><div class="service-page-title">Executive Assistance</div><p class="service-page-desc">C-suite briefing preparation, inbox zero systems with draft-on-behalf workflows, travel coordination with contingency planning.</p><div class="service-page-deliverables" style="color:#185fa5;">Starting deliverables:</div><ul class="service-page-list"><li>→ Weekly executive briefing packs</li><li>→ Gmail label system + SLA framework</li><li>→ Full travel itinerary with contingencies</li></ul></div>
+      <div class="service-page-card"><div class="service-page-num" style="color:#0f6e56;">04</div><div class="service-page-title">E-Learning Administration</div><p class="service-page-desc">Student onboarding materials, LMS course structure design, academic records tracking — compatible with Google Classroom, Moodle, and Canvas.</p><div class="service-page-deliverables" style="color:#0f6e56;">Starting deliverables:</div><ul class="service-page-list"><li>→ Student welcome packet with FAQ</li><li>→ Multi-tab academic records tracker</li><li>→ 4-week LMS module structure doc</li></ul></div>
+      <div class="service-page-card service-full-width"><div class="service-page-num" style="color:#a32d2d;">05</div><div class="service-page-title">Data Entry &amp; Records Management</div><p class="service-page-desc">Data cleanup and standardization, accuracy tracking, multi-sheet grade and attendance systems with automated dashboards.</p><div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;"><div style="font-size:13px;color:var(--slate);">→ 200-row data audit with change log</div><div style="font-size:13px;color:var(--slate);">→ 30-day accuracy log (99.2% avg)</div><div style="font-size:13px;color:var(--slate);">→ Grade + attendance tracker dashboard</div></div></div>
     </div>
   </div>
   <footer><p>Built by <span>Marc Louie Jay Aniez</span> · Virtual Assistant Portfolio · 2026</p></footer>
 </div>
 
-<!-- ABOUT -->
+<!-- ═══ ABOUT ═══ -->
 <div id="page-about" class="page">
   <div class="section">
     <div class="section-label">About</div>
     <div class="section-title">Who I am</div>
     <div class="about-grid">
       <div class="about-bio">
-        <p>My name is Marc Louie Jay Aniez, a virtual assistant and administrative systems builder based in Pagadian City, Western Mindanao, Philippines. I specialize in creating organizational systems that eliminate inefficiency and bring clarity to complex workflows.</p>
+        <p>My name is Marc Louie Jay Aniez, a virtual assistant and administrative systems builder based in Cagayan de Oro, Northern Mindanao, Philippines. I specialize in creating organizational systems that eliminate inefficiency and bring clarity to complex workflows.</p>
         <p>My background spans IT, education, and administration — giving me a unique perspective on how to design processes that actually work for real teams. I understand both the technical side and the human side of getting things done.</p>
         <p>I build things that last: SOPs that new hires can follow on day one, spreadsheet systems that free up hours every month, and communication frameworks that keep nothing falling through the cracks.</p>
         <div class="journey-block">
@@ -265,7 +412,7 @@ footer span{color:var(--teal);}
       <div>
         <div class="tools-section">
           <h3>Tools &amp; platforms</h3>
-          <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Google Workspace (Docs, Sheets, Drive, Calendar, Meet)</div><div class="tool-level">Advanced</div></div>
+          <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Google Workspace (Docs, Sheets, Drive, Calendar)</div><div class="tool-level">Advanced</div></div>
           <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Microsoft Excel / Word</div><div class="tool-level">Advanced</div></div>
           <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Gmail / Google Calendar</div><div class="tool-level">Advanced</div></div>
           <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Google Classroom / Moodle / Canvas</div><div class="tool-level">Intermediate</div></div>
@@ -273,16 +420,16 @@ footer span{color:var(--teal);}
           <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Notion</div><div class="tool-level">Intermediate</div></div>
           <div class="tool-row"><div class="tool-dot"></div><div class="tool-name">Zoom / Google Meet</div><div class="tool-level">Proficient</div></div>
         </div>
-        <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:1.75rem;margin-top:1.25rem;">
-          <h3 style="font-size:14px;font-weight:500;color:var(--navy);margin-bottom:1.25rem;">Key strengths</h3>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Systems thinking</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Attention to detail</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Process documentation</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Data accuracy</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Executive support</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Multi-timezone scheduling</span>
-            <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:#e1f5ee;color:#0f6e56;border:0.5px solid #9fe1cb;">Proactive communication</span>
+        <div class="strengths-wrap">
+          <h3>Key strengths</h3>
+          <div class="strengths">
+            <span class="strength-tag">Systems thinking</span>
+            <span class="strength-tag">Attention to detail</span>
+            <span class="strength-tag">Process documentation</span>
+            <span class="strength-tag">Data accuracy</span>
+            <span class="strength-tag">Executive support</span>
+            <span class="strength-tag">Timezone scheduling</span>
+            <span class="strength-tag">Proactive communication</span>
           </div>
         </div>
       </div>
@@ -291,7 +438,7 @@ footer span{color:var(--teal);}
   <footer><p>Built by <span>Marc Louie Jay Aniez</span> · Virtual Assistant Portfolio · 2026</p></footer>
 </div>
 
-<!-- CONTACT -->
+<!-- ═══ CONTACT ═══ -->
 <div id="page-contact" class="page">
   <div class="section">
     <div class="section-label">Get in touch</div>
@@ -302,20 +449,20 @@ footer span{color:var(--teal);}
         <p>I'm available for remote VA, administrative support, executive assistance, data entry, and e-learning admin roles. Let's discuss how I can help streamline your operations.</p>
         <div class="contact-links">
           <a class="contact-link" href="mailto:marclouieaniez@gmail.com">
-            <div class="contact-icon" style="background:#e1f5ee;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#0f6e56" stroke-width="1.2"/><path d="M2 5.5l6 4 6-4" stroke="#0f6e56" stroke-width="1.2"/></svg></div>
-            <div><div style="font-size:11px;color:#4a5568;margin-bottom:1px;">Email</div><div style="font-size:13px;font-weight:500;color:#0f2744;">marclouieaniez@gmail.com</div></div>
+            <div class="contact-icon" style="background:#e1f5ee;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="#0f6e56" stroke-width="1.2"/><path d="M2 5.5l6 4 6-4" stroke="#0f6e56" stroke-width="1.2"/></svg></div>
+            <div><div style="font-size:11px;color:var(--slate);margin-bottom:1px;">Email</div><div style="font-size:13px;font-weight:500;">marclouieaniez@gmail.com</div></div>
           </a>
           <a class="contact-link" href="https://linkedin.com/in/marclouieaniez" target="_blank" rel="noopener">
-            <div class="contact-icon" style="background:#e6f1fb;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#185fa5" stroke-width="1.2"/><path d="M5.5 7v4M5.5 5.5v.01M8 11V7m0 0c0-1 .8-1.5 1.5-1.5S11 6 11 7v4" stroke="#185fa5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-            <div><div style="font-size:11px;color:#4a5568;margin-bottom:1px;">LinkedIn</div><div style="font-size:13px;font-weight:500;color:#0f2744;">linkedin.com/in/marclouieaniez</div></div>
+            <div class="contact-icon" style="background:#e6f1fb;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#185fa5" stroke-width="1.2"/><path d="M5.5 7v4M5.5 5.5v.01M8 11V7m0 0c0-1 .8-1.5 1.5-1.5S11 6 11 7v4" stroke="#185fa5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div><div style="font-size:11px;color:var(--slate);margin-bottom:1px;">LinkedIn</div><div style="font-size:13px;font-weight:500;">linkedin.com/in/marclouieaniez</div></div>
           </a>
           <div class="contact-link" style="cursor:default;">
-            <div class="contact-icon" style="background:#faeeda;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#854f0b" stroke-width="1.2"/><path d="M8 4.5v3.5l2.5 1.5" stroke="#854f0b" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-            <div><div style="font-size:11px;color:#4a5568;margin-bottom:1px;">Timezone</div><div style="font-size:13px;font-weight:500;color:#0f2744;">Philippine Time (PHT / GMT+8)</div></div>
+            <div class="contact-icon" style="background:#faeeda;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#854f0b" stroke-width="1.2"/><path d="M8 4.5v3.5l2.5 1.5" stroke="#854f0b" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div><div style="font-size:11px;color:var(--slate);margin-bottom:1px;">Timezone</div><div style="font-size:13px;font-weight:500;">Philippine Time (PHT / GMT+8)</div></div>
           </div>
           <div class="contact-link" style="cursor:default;">
-            <div class="contact-icon" style="background:#eeedfe;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.24 2 3 4.24 3 7c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" stroke="#534ab7" stroke-width="1.2"/></svg></div>
-            <div><div style="font-size:11px;color:#4a5568;margin-bottom:1px;">Location</div><div style="font-size:13px;font-weight:500;color:#0f2744;">Pagadian City, Western Mindanao, PH</div></div>
+            <div class="contact-icon" style="background:#eeedfe;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.24 2 3 4.24 3 7c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" stroke="#534ab7" stroke-width="1.2"/></svg></div>
+            <div><div style="font-size:11px;color:var(--slate);margin-bottom:1px;">Location</div><div style="font-size:13px;font-weight:500;">Cagayan de Oro, Northern Mindanao, PH</div></div>
           </div>
         </div>
       </div>
@@ -325,7 +472,7 @@ footer span{color:var(--teal);}
         <div class="avail-row"><span class="avail-label">Work type</span><span class="avail-value">Remote only</span></div>
         <div class="avail-row"><span class="avail-label">Roles</span><span class="avail-value">VA · Admin · EA · Data Entry</span></div>
         <div class="avail-row"><span class="avail-label">Timezone</span><span class="avail-value">PHT (GMT+8)</span></div>
-        <div class="avail-row"><span class="avail-label">Portfolio projects</span><span class="avail-value">14 completed</span></div>
+        <div class="avail-row"><span class="avail-label">Projects</span><span class="avail-value">14 completed</span></div>
         <div class="avail-row"><span class="avail-label">Response time</span><span class="avail-value">Within 24 hours</span></div>
         <div class="avail-badge"><div class="avail-badge-dot"></div>Available for remote work · March 2026</div>
       </div>
@@ -335,12 +482,88 @@ footer span{color:var(--teal);}
 </div>
 
 <script>
-const projectData={'gva-sop':{cat:'General VA · Project 1',catColor:'#0d9e75',title:'Faculty Communication Workflow SOP',desc:'A complete, hire-ready standard operating procedure covering the full email lifecycle — inbound triage, priority classification, response drafting, follow-up tracking, escalation paths, and weekly reporting — for a 30+ member academic institution.',tags:['Word Document','SOP-GVA-001','9 Sections','Escalation Matrix','Google Docs'],highlights:[{val:'9',label:'SOP sections'},{val:'<24h',label:'Response SLA'},{val:'0',label:'Missed follow-ups'},{val:'3',label:'Priority tiers'}],left:[['Document ID','SOP-GVA-001'],['Status','Active · March 2026'],['Applies to','All incoming VA hires'],['Review cycle','Quarterly'],['Tools','Gmail, Google Sheets, Google Drive, Notion'],['Trigger types','4 process triggers documented']],right:[['Triage window','Within 30 minutes of receipt'],['Urgent SLA','Same day, 4 business hours'],['Standard SLA','Within 24 business hours'],['Low SLA','Within 48 business hours'],['Weekly report','Every Friday by 4:00 PM'],['Escalation paths','6 scenarios documented']]},'gva-templates':{cat:'General VA · Project 2',catColor:'#0d9e75',title:'Email Template Library — 5 Professional Templates',desc:'A reusable email template library of 5 professionally written templates covering core VA communication scenarios. Each template includes a subject line, variable placeholders in brackets, and tone guidance for client-facing and internal use.',tags:['Word Document','5 Templates','Subject Lines','Tone Notes','GVA-ETL-001'],highlights:[{val:'5',label:'Ready templates'},{val:'100%',label:'Customizable'},{val:'Day 1',label:'Ready to send'},{val:'5',label:'Tone variants'}],left:[['Template 01','Follow-Up Email · Neutral/Friendly'],['Template 02','Meeting Scheduling · Formal/Professional'],['Template 03','Status Update · Neutral/Informative'],['Template 04','Information Request · Neutral/Direct'],['Template 05','Apology/Delay Notice · Formal/Empathetic']],right:[['Placeholders','All variable fields in [brackets]'],['Subject lines','Included per template'],['Tone notes','Usage guidance per template'],['Compatibility','Gmail and Outlook'],['Format','Google Docs / Word'],['Use case','Client-facing and internal']]},'gva-dashboard':{cat:'General VA · Project 3',catColor:'#0d9e75',title:'Weekly Task Management Dashboard',desc:'A live 3-tab Google Sheets workbook tracking 15–20 concurrent tasks with priority tiers, deadline columns, dropdown status fields, color-coded rows by priority, and automated completion rate formulas — no micromanagement needed.',tags:['Google Sheets','3 Tabs','Dropdown Validation','Auto Formulas','Conditional Formatting'],highlights:[{val:'3',label:'Workbook tabs'},{val:'15–20',label:'Tasks tracked'},{val:'95%+',label:'Completion rate'},{val:'Auto',label:'Status formulas'}],left:[['Tab 1','Task List — priority, deadline, status, notes'],['Tab 2','Weekly Summary — completion metrics'],['Tab 3','Archive — completed tasks log'],['Status options','Pending, In Progress, Done, On Hold'],['Priority tiers','High, Medium, Low — color coded']],right:[['Key formulas','COUNTIF, IFERROR, running totals'],['Dropdown validation','Status and priority fields'],['Conditional formatting','Row colors by priority'],['Platform','Google Sheets'],['Completion rate','Auto-calculated percentage'],['Designed for','Remote VA task management']]},'aa-filing':{cat:'Admin Assistant · Project 1',catColor:'#854f0b',title:'Digital Filing System — Cloud Folder Architecture',desc:'A complete Google Drive folder architecture designed for a 30-person private school, covering 6 department folders, 2 utility folders, full naming convention standards, and a role-based access permission matrix.',tags:['Google Drive','Word Document','Naming Conventions','Permission Matrix','AA-P1-FILING'],highlights:[{val:'6',label:'Departments'},{val:'50%',label:'Faster retrieval'},{val:'8',label:'Root folders'},{val:'7',label:'Role levels'}],left:[['01_Administration','Policies, org charts, contracts'],['02_Finance','Budgets, invoices, reports'],['03_Academic','Curriculum, syllabi, assessments'],['04_HR-Personnel','Staff records, onboarding'],['05_Communications','Templates, announcements'],['06_Events-Calendar','Event plans, academic calendar']],right:[['Folder prefix','Two-digit: 01_, 02_, 03_...'],['Date format','YYYY-MM-DD'],['File naming','YYYY-MM-DD_Title_Version'],['Version control','_v1, _v2, _FINAL suffix'],['Draft prefix','DRAFT_ until approved'],['Archive rule','Move to _Archive — do not delete']]},'aa-minutes':{cat:'Admin Assistant · Project 2',catColor:'#854f0b',title:'Meeting Minutes — Faculty Council Quarterly Review',desc:'A standardized meeting minutes template capturing agenda items, discussion notes, formal decisions, and action items with named owners and deadlines — improving post-meeting follow-through and accountability.',tags:['Word Document','7 Action Items','Decision Log','Signature Block','AA-P2-MINUTES'],highlights:[{val:'7',label:'Agenda items'},{val:'5',label:'Decisions made'},{val:'7',label:'Action items'},{val:'8',label:'Attendees tracked'}],left:[['Meeting type','Faculty Council Quarterly Review'],['Date','March 18, 2026 · 10:00–11:30 AM'],['Platform','Google Meet (remote)'],['Chair','Dr. Elena Reyes — Principal'],['Minutes by','Administrative Assistant'],['Distribution','All attendees + Drive folder']],right:[['Decision D1','PHP 12,400 surplus reallocated — approved'],['Decision D2','Grade 10 Math Intervention Plan approved'],['Decision D3','2 faculty positions approved'],['Decision D4','Google Drive migration deadline confirmed'],['Decision D5','Parent-Teacher Conference confirmed'],['Signature block','Recorder + Approver fields included']]},'aa-calendar':{cat:'Admin Assistant · Project 3',catColor:'#854f0b',title:'Calendar Management — 5-Day Executive Schedule',desc:'A fully annotated 5-day executive calendar for a fictional CEO, managing 8 meetings, 4 focus blocks, and 2 cross-timezone conflict resolutions with documented scheduling logic and buffer rules.',tags:['Google Calendar Logic','Timezone Conversion','Scheduling Documentation','AA-P3-CALENDAR'],highlights:[{val:'18',label:'Calendar blocks'},{val:'8',label:'Meetings'},{val:'2',label:'Conflicts resolved'},{val:'4',label:'Focus blocks'}],left:[['Executive','Mr. Rafael Torres — CEO'],['Week','March 16–20, 2026 (Mon–Fri)'],['Timezone','Philippine Time (PHT / GMT+8)'],['Buffer rule','30-min buffer before all recurring meetings'],['Focus blocks','2-hr DND blocks — protected'],['Travel blocks','30-min prep 48 hrs before all travel']],right:[['Conflict 1','SG call (SGT=PHT) — moved 8:30→10:30 AM'],['Conflict 2','SF call (PHT−16h) — mid-week rescheduled'],['Invite rule','Both local times in subject line'],['Lunch','12:00–1:00 PM protected daily'],['Post-meeting','15–30 min reserved for notes'],['Standup','Recurring Monday, agenda sent 24 hrs prior']]},'jea-brief':{cat:'Junior EA · Project 1',catColor:'#185fa5',title:'Executive Briefing Document — Weekly Prep Pack',desc:'A mock executive briefing pack for CEO Rafael Torres covering the full week of March 16–20, 2026, with a daily at-a-glance overview, detailed meeting prep notes, pending decisions with urgency flags, and carried-over action items.',tags:['Word Document','C-Suite','Decision Log','Action Items','JEA-P1-BRIEF'],highlights:[{val:'5',label:'Days covered'},{val:'5',label:'Meeting preps'},{val:'5',label:'Pending decisions'},{val:'5',label:'Action items'}],left:[['Executive','Mr. Rafael Torres — CEO'],['Prepared by','Jamie Santos, EA'],['Issued','Sunday March 15 @ 7:00 PM'],['Priority 1','Q2 Strategic Plan — first draft due Friday'],['Priority 2','SG EduTech Partnership term sheet review'],['Priority 3','Grade 10 Math Intervention Plan approval']],right:[['Decision D1','Approve Grade 10 Math Plan · High · Mar 25'],['Decision D2','Sign SG Partnership Term Sheet · High · Mar 31'],['Decision D3','Authorize PHP 12,400 reallocation · Medium'],['Decision D4','Confirm Manila board pack list · Medium'],['Decision D5','Approve 2 faculty positions · Lower · Mar 22'],['Format','Scannable 1-page table format']]},'jea-inbox':{cat:'Junior EA · Project 2',catColor:'#185fa5',title:'Inbox Zero System — Email Triage & Folder Architecture',desc:'A complete executive inbox management system using Gmail labels, filters, and a 5-category triage protocol. Includes response time SLAs per sender tier and a 7-step draft-on-behalf workflow for maintaining inbox zero daily.',tags:['Gmail','5-Category Triage','SLA Framework','15 Sub-labels','Draft-on-Behalf','JEA-P2-INBOX'],highlights:[{val:'5',label:'Triage categories'},{val:'15',label:'Gmail sub-labels'},{val:'2h',label:'Tier 1 SLA'},{val:'7',label:'Draft protocol steps'}],left:[['Category 1','Action Required — same day, 4-hr SLA'],['Category 2','FYI / Read Only — end-of-day digest'],['Category 3','Waiting / Follow-Up — reviewed 9 AM & 3 PM'],['Category 4','Delegate — forwarded within 1 hour'],['Category 5','Archive / File — same business day'],['Goal','Inbox zero by 5:00 PM PHT daily']],right:[['Board/Investors SLA','4 business hours'],['Legal/Regulators SLA','2 hours — escalated immediately'],['Dept. Heads SLA','24 hours'],['Partners/Vendors SLA','24 hours'],['General inquiries','48 hours or auto-respond'],['Volume handled','80–120 emails per day']]},'jea-travel':{cat:'Junior EA · Project 3',catColor:'#185fa5',title:'Travel & Event Coordination Plan — 2-Day Business Trip',desc:'A full executive travel itinerary for a Cebu–Manila–Cebu business trip covering flights, hotel, ground transport, meals, meetings, and partner dinner — with a contingency note for every logistics item and a 12-item pre-departure checklist.',tags:['Word Document','2-Day Itinerary','Contingency Plans','12-Item Checklist','JEA-P3-TRAVEL'],highlights:[{val:'2',label:'Full days planned'},{val:'16',label:'Time blocks'},{val:'12',label:'Checklist items'},{val:'100%',label:'Contingencies covered'}],left:[['Traveler','Mr. Rafael Torres — CEO'],['Route','Cebu (Mactan) → Manila (NAIA T3) → Cebu'],['Hotel','The Peninsula Manila, Makati'],['Day 1 meetings','Working lunch, board prep session, partner dinner'],['Day 2 meetings','Quarterly Board Meeting (2 hrs) + debrief'],['Flight backup','Pre-identified alternate flights per leg']],right:[['Car service','JB Limousine + Premier Transport booked'],['Backup transport','Grab Black pre-loaded as contingency'],['Dining','Toyo Eatery + Spices IHG + Peninsula Lobby'],['Backup dining','Provisional reservation at backup venues'],['Board pack','12 copies printed, bound, and labeled'],['Checklist status','Owner assigned per item (EA vs CEO)']]},'ea-onboarding':{cat:'E-Learning Admin · Project 1',catColor:'#0f6e56',title:'Student Onboarding Guide — EduLearn Academy',desc:'A comprehensive student welcome packet for EduLearn Academy covering a quick-start checklist, platform navigation guide, assignment submission rules, communication standards, and a 10-item FAQ — designed to reduce first-week support queries.',tags:['Word Document','LMS','10-Item FAQ','Submission Rules','EA-P1-ONBOARDING'],highlights:[{val:'5',label:'Guide sections'},{val:'8',label:'Checklist steps'},{val:'10',label:'FAQ items'},{val:'40%+',label:'Query reduction'}],left:[['Platform','EduLearn LMS (also: Google Classroom, Moodle, Canvas)'],['Section 1','Quick-start checklist — 8 steps in 48 hours'],['Section 2','Platform navigation — 8 key areas'],['Section 3','Assignment submission rules'],['Section 4','Communication standards and norms'],['Section 5','10-item self-service FAQ']],right:[['File formats','PDF, DOCX, PPTX, XLSX, JPG, PNG'],['Deadline rule','All deadlines 11:59 PM PHT'],['Late policy','10% deduction within 24h; 0 after'],['File naming','SURNAME_Name_CourseCode_Title.pdf'],['AI use policy','Disclosure form required'],['Response time','Facilitator: within 2 business days']]},'ea-records':{cat:'E-Learning Admin · Project 2',catColor:'#0f6e56',title:'Academic Records Management System',desc:'A multi-tab Google Sheets academic records tracker for 150+ students across 4 grading periods, featuring automated averages, 3-tier status flags, a summary dashboard, and a change log for audit purposes — adopted as the department standard.',tags:['Google Sheets','8-Tab System','VLOOKUP','COUNTIF','Status Flags','EA-P2-RECORDS'],highlights:[{val:'150+',label:'Students tracked'},{val:'~30%',label:'Time saved'},{val:'0',label:'Missed deadlines'},{val:'8',label:'Tracker tabs'}],left:[['Q1–Q4 Grades','AVERAGE(), IF(), COUNTIF() per period'],['Summary Dashboard','VLOOKUP(), COUNTIF(), AVERAGEIF()'],['Submission Log','COUNTIFS(), TODAY(), DATEDIF()'],['Change Log','Date-stamped audit trail — manual entry'],['Settings tab','Named ranges, grading scale, section list'],['Scale: Passing','≥75 — auto green flag']],right:[['Scale: Needs Attention','65–74 — amber flag + facilitator alert'],['Scale: At Risk','<65 — red flag + counseling referral'],['Report time','Reduced ~5h → ~3.5h per quarter'],['Sections','5 sections tracked per grading period'],['Adoption','Set as dept. standard for AY 2026–2027'],['Audit','Change Log tab provides complete trail']]},'ea-lms':{cat:'E-Learning Admin · Project 3',catColor:'#0f6e56',title:'LMS Course Module Structure — ENG201',desc:'A 4-week LMS module structure for ENG201: Academic Writing for the Digital Age, with learning objectives, resource lists, assignment schedules, and deadlines per week — formatted for direct upload into Google Classroom, Moodle, or Canvas.',tags:['LMS Design','Google Classroom','Moodle','Canvas','4-Week Plan','EA-P3-LMS-MODULE'],highlights:[{val:'4',label:'Course weeks'},{val:'12',label:'Learning objectives'},{val:'150',label:'Total points'},{val:'8',label:'Graded tasks'}],left:[['Week 1','Foundations — PEEL structure, platform nav'],['Week 2','Research — APA 7th, CRAAP test, bibliography'],['Week 3','Argumentation — thesis, essay outline, peer review'],['Week 4','Revision — digital writing, final essay submission'],['Per week','2 video lectures, 1 reading, 1 activity, 1 template']],right:[['Activity 1.1','PEEL Practice — 10 pts'],['Quiz 2.1','APA Citations — 15 pts'],['Activity 2.1','Annotated Bibliography — 20 pts'],['Activity 3.1','Thesis Workshop — 15 pts'],['Peer Review','10 pts (participation)'],['Final Essay','50 pts — 1,000–1,200 words']]},'des-cleanup':{cat:'Data Entry · Project 1',catColor:'#a32d2d',title:'Before & After Data Cleanup — Student Records',desc:'A full data audit and cleanup of a 200-row fictional student academic records dataset, identifying formatting inconsistencies, duplicate entries, and unstandardized fields — with a change log documenting every correction made.',tags:['Excel','PROPER()','TRIM()','Deduplication','Change Log','DES-PORT-2026'],highlights:[{val:'200',label:'Rows audited'},{val:'47',label:'Errors fixed'},{val:'12',label:'Duplicates removed'},{val:'~40%',label:'Future error reduction'}],left:[['Tab 1','Raw Data — original unmodified dataset'],['Tab 2','Cleaned Data — corrected and standardized'],['Tab 3','Change Log — every edit documented'],['Fields cleaned','Student ID, Date of Birth, Grade Level'],['Fields cleaned','Email, Name casing, Enrollment Status']],right:[['Key formulas','PROPER(), TRIM(), data validation rules'],['Duplicates','12 removed with deduplication'],['Formatting errors','47 corrected with rule documentation'],['Date format','Standardized to MM/DD/YYYY'],['Change log format','Original value → Corrected value + rule'],['Impact','100% field standardization achieved']]},'des-accuracy':{cat:'Data Entry · Project 2',catColor:'#a32d2d',title:'Data Entry Accuracy Log — 30-Day Self-Assessment',desc:'A personal accuracy log maintained across 30 simulated data entry sessions averaging 158 records per session, tracking error rates, root causes, and self-corrections — achieving a sustained 99.2% accuracy rate.',tags:['Google Sheets','COUNTIF','IFERROR','Error Analysis','30-Day Log','DES-PORT-2026'],highlights:[{val:'99.2%',label:'Accuracy rate'},{val:'4,750+',label:'Records processed'},{val:'30',label:'Sessions logged'},{val:'0',label:'Sessions below 97%'}],left:[['Tab 1','Accuracy Log — all 30 sessions'],['Tab 2','Error Analysis — root cause breakdown'],['Per session','Date, Task Type, Records, Errors, Accuracy %'],['Per session','Correction Method, Root Cause documented'],['Avg per session','158 records processed']],right:[['Top error 1','Transposition errors'],['Top error 2','Copy-paste formatting issues'],['Top error 3','Missing required fields'],['Prevention','Strategy documented per error type'],['Formulas','IFERROR(), COUNTIF(), running totals'],['Platform','Google Sheets auto-calculated formulas']]}};
+const projectData={
+'gva-sop':{cat:'General VA · Project 1',catColor:'#0d9e75',title:'Faculty Communication Workflow SOP',desc:'A complete, hire-ready standard operating procedure covering the full email lifecycle — inbound triage, priority classification, response drafting, follow-up tracking, escalation paths, and weekly reporting — for a 30+ member academic institution.',tags:['Word Document','SOP-GVA-001','9 Sections','Escalation Matrix'],highlights:[{val:'9',label:'SOP sections'},{val:'<24h',label:'Response SLA'},{val:'0',label:'Missed follow-ups'},{val:'3',label:'Priority tiers'}],left:[['Document ID','SOP-GVA-001'],['Status','Active · March 2026'],['Applies to','All incoming VA hires'],['Review cycle','Quarterly'],['Tools','Gmail, Google Sheets, Google Drive, Notion'],['Trigger types','4 process triggers documented']],right:[['Triage window','Within 30 minutes of receipt'],['Urgent SLA','Same day, 4 business hours'],['Standard SLA','Within 24 business hours'],['Low SLA','Within 48 business hours'],['Weekly report','Every Friday by 4:00 PM'],['Escalation paths','6 scenarios documented']]},
+'gva-templates':{cat:'General VA · Project 2',catColor:'#0d9e75',title:'Email Template Library — 5 Professional Templates',desc:'A reusable email template library of 5 professionally written templates covering core VA communication scenarios. Each includes a subject line, variable placeholders in brackets, and tone guidance.',tags:['Word Document','5 Templates','Subject Lines','Tone Notes'],highlights:[{val:'5',label:'Ready templates'},{val:'100%',label:'Customizable'},{val:'Day 1',label:'Ready to send'},{val:'5',label:'Tone variants'}],left:[['Template 01','Follow-Up Email · Neutral/Friendly'],['Template 02','Meeting Scheduling · Formal/Professional'],['Template 03','Status Update · Neutral/Informative'],['Template 04','Information Request · Neutral/Direct'],['Template 05','Apology/Delay Notice · Formal/Empathetic']],right:[['Placeholders','All variable fields in [brackets]'],['Subject lines','Included per template'],['Tone notes','Usage guidance per template'],['Compatibility','Gmail and Outlook'],['Format','Google Docs / Word'],['Use case','Client-facing and internal']]},
+'gva-dashboard':{cat:'General VA · Project 3',catColor:'#0d9e75',title:'Weekly Task Management Dashboard',desc:'A live 3-tab Google Sheets workbook tracking 15–20 concurrent tasks with priority tiers, deadline columns, dropdown status fields, and automated completion rate formulas.',tags:['Google Sheets','3 Tabs','Dropdown Validation','Auto Formulas'],highlights:[{val:'3',label:'Workbook tabs'},{val:'15–20',label:'Tasks tracked'},{val:'95%+',label:'Completion rate'},{val:'Auto',label:'Status formulas'}],left:[['Tab 1','Task List — priority, deadline, status, notes'],['Tab 2','Weekly Summary — completion metrics'],['Tab 3','Archive — completed tasks log'],['Status options','Pending, In Progress, Done, On Hold'],['Priority tiers','High, Medium, Low — color coded']],right:[['Key formulas','COUNTIF, IFERROR, running totals'],['Dropdown validation','Status and priority fields'],['Conditional formatting','Row colors by priority'],['Platform','Google Sheets'],['Completion rate','Auto-calculated percentage'],['Designed for','Remote VA task management']]},
+'aa-filing':{cat:'Admin Assistant · Project 1',catColor:'#854f0b',title:'Digital Filing System — Cloud Folder Architecture',desc:'A complete Google Drive folder architecture for a 30-person private school, covering 6 department folders, 2 utility folders, full naming convention standards, and a role-based access permission matrix.',tags:['Google Drive','Word Document','Naming Conventions','Permission Matrix'],highlights:[{val:'6',label:'Departments'},{val:'50%',label:'Faster retrieval'},{val:'8',label:'Root folders'},{val:'7',label:'Role levels'}],left:[['01_Administration','Policies, org charts, contracts'],['02_Finance','Budgets, invoices, reports'],['03_Academic','Curriculum, syllabi, assessments'],['04_HR-Personnel','Staff records, onboarding'],['05_Communications','Templates, announcements'],['06_Events-Calendar','Event plans, academic calendar']],right:[['Folder prefix','Two-digit: 01_, 02_, 03_...'],['Date format','YYYY-MM-DD'],['File naming','YYYY-MM-DD_Title_Version'],['Version control','_v1, _v2, _FINAL suffix'],['Draft prefix','DRAFT_ until approved'],['Archive rule','Move to _Archive — do not delete']]},
+'aa-minutes':{cat:'Admin Assistant · Project 2',catColor:'#854f0b',title:'Meeting Minutes — Faculty Council Quarterly Review',desc:'A standardized meeting minutes template capturing agenda items, discussion notes, formal decisions, and action items with named owners and deadlines.',tags:['Word Document','7 Action Items','Decision Log','Signature Block'],highlights:[{val:'7',label:'Agenda items'},{val:'5',label:'Decisions made'},{val:'7',label:'Action items'},{val:'8',label:'Attendees tracked'}],left:[['Meeting type','Faculty Council Quarterly Review'],['Date','March 18, 2026 · 10:00–11:30 AM'],['Platform','Google Meet (remote)'],['Chair','Dr. Elena Reyes — Principal'],['Minutes by','Administrative Assistant'],['Distribution','All attendees + Drive folder']],right:[['Decision D1','PHP 12,400 surplus reallocated — approved'],['Decision D2','Grade 10 Math Intervention Plan approved'],['Decision D3','2 faculty positions approved'],['Decision D4','Google Drive migration deadline confirmed'],['Decision D5','Parent-Teacher Conference confirmed'],['Signature block','Recorder + Approver fields included']]},
+'aa-calendar':{cat:'Admin Assistant · Project 3',catColor:'#854f0b',title:'Calendar Management — 5-Day Executive Schedule',desc:'A fully annotated 5-day executive calendar managing 8 meetings, 4 focus blocks, and 2 cross-timezone conflict resolutions with documented scheduling logic and buffer rules.',tags:['Google Calendar Logic','Timezone Conversion','Scheduling Documentation'],highlights:[{val:'18',label:'Calendar blocks'},{val:'8',label:'Meetings'},{val:'2',label:'Conflicts resolved'},{val:'4',label:'Focus blocks'}],left:[['Executive','Mr. Rafael Torres — CEO'],['Week','March 16–20, 2026 (Mon–Fri)'],['Timezone','Philippine Time (PHT / GMT+8)'],['Buffer rule','30-min buffer before recurring meetings'],['Focus blocks','2-hr DND blocks — protected'],['Travel blocks','30-min prep 48 hrs before travel']],right:[['Conflict 1','SG call (SGT=PHT) — moved 8:30→10:30 AM'],['Conflict 2','SF call (PHT−16h) — mid-week rescheduled'],['Invite rule','Both local times in subject line'],['Lunch','12:00–1:00 PM protected daily'],['Post-meeting','15–30 min reserved for notes'],['Standup','Recurring Monday, agenda sent 24 hrs prior']]},
+'jea-brief':{cat:'Junior EA · Project 1',catColor:'#185fa5',title:'Executive Briefing Document — Weekly Prep Pack',desc:'A mock executive briefing pack for CEO Rafael Torres covering the full week of March 16–20, 2026, with a daily overview, meeting prep notes, pending decisions with urgency flags, and carried-over action items.',tags:['Word Document','C-Suite','Decision Log','Action Items'],highlights:[{val:'5',label:'Days covered'},{val:'5',label:'Meeting preps'},{val:'5',label:'Pending decisions'},{val:'5',label:'Action items'}],left:[['Executive','Mr. Rafael Torres — CEO'],['Prepared by','Jamie Santos, EA'],['Issued','Sunday March 15 @ 7:00 PM'],['Priority 1','Q2 Strategic Plan — first draft due Friday'],['Priority 2','SG EduTech Partnership term sheet review'],['Priority 3','Grade 10 Math Intervention Plan approval']],right:[['Decision D1','Approve Grade 10 Math Plan · High · Mar 25'],['Decision D2','Sign SG Partnership Term Sheet · High · Mar 31'],['Decision D3','Authorize PHP 12,400 reallocation · Medium'],['Decision D4','Confirm Manila board pack list · Medium'],['Decision D5','Approve 2 faculty positions · Lower · Mar 22'],['Format','Scannable 1-page table format']]},
+'jea-inbox':{cat:'Junior EA · Project 2',catColor:'#185fa5',title:'Inbox Zero System — Email Triage & Folder Architecture',desc:'A complete executive inbox management system using Gmail labels, filters, and a 5-category triage protocol with response time SLAs and a 7-step draft-on-behalf workflow.',tags:['Gmail','5-Category Triage','SLA Framework','15 Sub-labels'],highlights:[{val:'5',label:'Triage categories'},{val:'15',label:'Gmail sub-labels'},{val:'2h',label:'Tier 1 SLA'},{val:'7',label:'Draft protocol steps'}],left:[['Category 1','Action Required — same day, 4-hr SLA'],['Category 2','FYI / Read Only — end-of-day digest'],['Category 3','Waiting / Follow-Up — reviewed 9 AM & 3 PM'],['Category 4','Delegate — forwarded within 1 hour'],['Category 5','Archive / File — same business day'],['Goal','Inbox zero by 5:00 PM PHT daily']],right:[['Board/Investors SLA','4 business hours'],['Legal/Regulators SLA','2 hours — escalated immediately'],['Dept. Heads SLA','24 hours'],['Partners/Vendors SLA','24 hours'],['General inquiries','48 hours or auto-respond'],['Volume handled','80–120 emails per day']]},
+'jea-travel':{cat:'Junior EA · Project 3',catColor:'#185fa5',title:'Travel & Event Coordination Plan — 2-Day Business Trip',desc:'A full executive travel itinerary for a Cebu–Manila–Cebu business trip covering flights, hotel, ground transport, meals, meetings, and partner dinner — with a contingency note for every logistics item.',tags:['Word Document','2-Day Itinerary','Contingency Plans','12-Item Checklist'],highlights:[{val:'2',label:'Full days planned'},{val:'16',label:'Time blocks'},{val:'12',label:'Checklist items'},{val:'100%',label:'Contingencies covered'}],left:[['Traveler','Mr. Rafael Torres — CEO'],['Route','Cebu (Mactan) → Manila (NAIA T3) → Cebu'],['Hotel','The Peninsula Manila, Makati'],['Day 1 meetings','Working lunch, board prep, partner dinner'],['Day 2 meetings','Quarterly Board Meeting (2 hrs) + debrief'],['Flight backup','Pre-identified alternate flights per leg']],right:[['Car service','JB Limousine + Premier Transport booked'],['Backup transport','Grab Black pre-loaded as contingency'],['Dining','Toyo Eatery + Spices IHG + Peninsula Lobby'],['Backup dining','Provisional reservation at backup venues'],['Board pack','12 copies printed, bound, and labeled'],['Checklist status','Owner assigned per item (EA vs CEO)']]},
+'ea-onboarding':{cat:'E-Learning Admin · Project 1',catColor:'#0f6e56',title:'Student Onboarding Guide — EduLearn Academy',desc:'A comprehensive student welcome packet covering a quick-start checklist, platform navigation, assignment submission rules, communication standards, and a 10-item FAQ — designed to reduce first-week support queries.',tags:['Word Document','LMS','10-Item FAQ','Submission Rules'],highlights:[{val:'5',label:'Guide sections'},{val:'8',label:'Checklist steps'},{val:'10',label:'FAQ items'},{val:'40%+',label:'Query reduction'}],left:[['Platform','EduLearn LMS (Google Classroom, Moodle, Canvas)'],['Section 1','Quick-start checklist — 8 steps in 48 hours'],['Section 2','Platform navigation — 8 key areas'],['Section 3','Assignment submission rules'],['Section 4','Communication standards and norms'],['Section 5','10-item self-service FAQ']],right:[['File formats','PDF, DOCX, PPTX, XLSX, JPG, PNG'],['Deadline rule','All deadlines 11:59 PM PHT'],['Late policy','10% deduction within 24h; 0 after'],['File naming','SURNAME_Name_CourseCode_Title.pdf'],['AI use policy','Disclosure form required'],['Response time','Facilitator: within 2 business days']]},
+'ea-records':{cat:'E-Learning Admin · Project 2',catColor:'#0f6e56',title:'Academic Records Management System',desc:'A multi-tab Google Sheets academic records tracker for 150+ students across 4 grading periods, featuring automated averages, 3-tier status flags, a summary dashboard, and a change log — adopted as the department standard.',tags:['Google Sheets','8-Tab System','VLOOKUP','COUNTIF','Status Flags'],highlights:[{val:'150+',label:'Students tracked'},{val:'~30%',label:'Time saved'},{val:'0',label:'Missed deadlines'},{val:'8',label:'Tracker tabs'}],left:[['Q1–Q4 Grades','AVERAGE(), IF(), COUNTIF() per period'],['Summary Dashboard','VLOOKUP(), COUNTIF(), AVERAGEIF()'],['Submission Log','COUNTIFS(), TODAY(), DATEDIF()'],['Change Log','Date-stamped audit trail — manual entry'],['Settings tab','Named ranges, grading scale, section list'],['Scale: Passing','≥75 — auto green flag']],right:[['Scale: Needs Attention','65–74 — amber flag + alert'],['Scale: At Risk','<65 — red flag + counseling referral'],['Report time','Reduced ~5h → ~3.5h per quarter'],['Sections','5 sections tracked per grading period'],['Adoption','Dept. standard for AY 2026–2027'],['Audit','Change Log tab provides complete trail']]},
+'ea-lms':{cat:'E-Learning Admin · Project 3',catColor:'#0f6e56',title:'LMS Course Module Structure — ENG201',desc:'A 4-week LMS module structure for ENG201: Academic Writing for the Digital Age, with learning objectives, resource lists, assignment schedules, and deadlines — formatted for Google Classroom, Moodle, or Canvas.',tags:['LMS Design','Google Classroom','Moodle','Canvas','4-Week Plan'],highlights:[{val:'4',label:'Course weeks'},{val:'12',label:'Learning objectives'},{val:'150',label:'Total points'},{val:'8',label:'Graded tasks'}],left:[['Week 1','Foundations — PEEL structure, platform nav'],['Week 2','Research — APA 7th, CRAAP test, bibliography'],['Week 3','Argumentation — thesis, essay outline, peer review'],['Week 4','Revision — digital writing, final essay submission'],['Per week','2 video lectures, 1 reading, 1 activity, 1 template']],right:[['Activity 1.1','PEEL Practice — 10 pts'],['Quiz 2.1','APA Citations — 15 pts'],['Activity 2.1','Annotated Bibliography — 20 pts'],['Activity 3.1','Thesis Workshop — 15 pts'],['Peer Review','10 pts (participation)'],['Final Essay','50 pts — 1,000–1,200 words']]},
+'des-cleanup':{cat:'Data Entry · Project 1',catColor:'#a32d2d',title:'Before & After Data Cleanup — Student Records',desc:'A full data audit and cleanup of a 200-row fictional student academic records dataset, with a change log documenting every correction made.',tags:['Excel','PROPER()','TRIM()','Deduplication','Change Log'],highlights:[{val:'200',label:'Rows audited'},{val:'47',label:'Errors fixed'},{val:'12',label:'Duplicates removed'},{val:'~40%',label:'Future error reduction'}],left:[['Tab 1','Raw Data — original unmodified dataset'],['Tab 2','Cleaned Data — corrected and standardized'],['Tab 3','Change Log — every edit documented'],['Fields cleaned','Student ID, Date of Birth, Grade Level'],['Fields cleaned','Email, Name casing, Enrollment Status']],right:[['Key formulas','PROPER(), TRIM(), data validation rules'],['Duplicates','12 removed with deduplication'],['Formatting errors','47 corrected with rule documentation'],['Date format','Standardized to MM/DD/YYYY'],['Change log format','Original value → Corrected value + rule'],['Impact','100% field standardization achieved']]},
+'des-accuracy':{cat:'Data Entry · Project 2',catColor:'#a32d2d',title:'Data Entry Accuracy Log — 30-Day Self-Assessment',desc:'A personal accuracy log across 30 simulated data entry sessions averaging 158 records per session, tracking error rates, root causes, and self-corrections — achieving 99.2% accuracy.',tags:['Google Sheets','COUNTIF','IFERROR','Error Analysis','30-Day Log'],highlights:[{val:'99.2%',label:'Accuracy rate'},{val:'4,750+',label:'Records processed'},{val:'30',label:'Sessions logged'},{val:'0',label:'Sessions below 97%'}],left:[['Tab 1','Accuracy Log — all 30 sessions'],['Tab 2','Error Analysis — root cause breakdown'],['Per session','Date, Task Type, Records, Errors, Accuracy %'],['Per session','Correction Method, Root Cause documented'],['Avg per session','158 records processed']],right:[['Top error 1','Transposition errors'],['Top error 2','Copy-paste formatting issues'],['Top error 3','Missing required fields'],['Prevention','Strategy documented per error type'],['Formulas','IFERROR(), COUNTIF(), running totals'],['Platform','Google Sheets auto-calculated formulas']]}
+};
 
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');document.querySelectorAll('.nav-link').forEach(l=>{if(l.textContent.trim().toLowerCase()===(id==='home'?'home':id))l.classList.add('active');});if(id==='projects'){document.getElementById('projects-list').style.display='block';document.getElementById('projects-detail').classList.remove('active');}window.scrollTo(0,0);}
-function filterProjects(cat,btn){document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.project-card[data-cat]').forEach(card=>{card.style.display=(cat==='all'||card.dataset.cat===cat)?'block':'none';});}
-function showProjectDetail(id){const d=projectData[id];if(!d)return;document.getElementById('detail-content').innerHTML=`<div style="margin-bottom:2.5rem;"><div class="detail-cat" style="color:${d.catColor}">${d.cat}</div><div class="detail-title">${d.title}</div><div class="detail-desc">${d.desc}</div><div class="detail-tags">${d.tags.map(t=>`<span class="detail-tag">${t}</span>`).join('')}</div></div><div class="highlights">${d.highlights.map(h=>`<div class="highlight-card"><div class="highlight-val">${h.val}</div><div class="highlight-label">${h.label}</div></div>`).join('')}</div><div class="detail-sections"><div class="detail-section"><h3>Project details</h3>${d.left.map(([k,v])=>`<div class="detail-item"><strong>${k}:</strong> ${v}</div>`).join('')}</div><div class="detail-section"><h3>Key specifications</h3>${d.right.map(([k,v])=>`<div class="detail-item"><strong>${k}:</strong> ${v}</div>`).join('')}</div></div>`;document.getElementById('projects-list').style.display='none';document.getElementById('projects-detail').classList.add('active');showPage('projects');window.scrollTo(0,0);}
-function closeProjectDetail(){document.getElementById('projects-detail').classList.remove('active');document.getElementById('projects-list').style.display='block';}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.querySelectorAll('.mobile-link').forEach(l=>l.classList.remove('active'));
+  document.querySelectorAll('.nav-link, .mobile-link').forEach(l=>{
+    if(l.textContent.trim().toLowerCase().startsWith(id==='home'?'home':id.substring(0,4)))l.classList.add('active');
+  });
+  if(id==='projects'){
+    document.getElementById('projects-list').style.display='block';
+    document.getElementById('projects-detail').classList.remove('active');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobile-menu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+function filterProjects(cat,btn){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card[data-cat]').forEach(card=>{
+    card.style.display=(cat==='all'||card.dataset.cat===cat)?'block':'none';
+  });
+}
+
+function showProjectDetail(id){
+  const d=projectData[id];if(!d)return;
+  document.getElementById('detail-content').innerHTML=`
+    <div style="margin-bottom:2rem;">
+      <div class="detail-cat" style="color:${d.catColor}">${d.cat}</div>
+      <div class="detail-title">${d.title}</div>
+      <div class="detail-desc">${d.desc}</div>
+      <div class="detail-tags">${d.tags.map(t=>`<span class="detail-tag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="highlights">${d.highlights.map(h=>`<div class="highlight-card"><div class="highlight-val">${h.val}</div><div class="highlight-label">${h.label}</div></div>`).join('')}</div>
+    <div class="detail-sections">
+      <div class="detail-section"><h3>Project details</h3>${d.left.map(([k,v])=>`<div class="detail-item"><strong>${k}:</strong> ${v}</div>`).join('')}</div>
+      <div class="detail-section"><h3>Key specifications</h3>${d.right.map(([k,v])=>`<div class="detail-item"><strong>${k}:</strong> ${v}</div>`).join('')}</div>
+    </div>`;
+  document.getElementById('projects-list').style.display='none';
+  document.getElementById('projects-detail').classList.add('active');
+  showPage('projects');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function closeProjectDetail(){
+  document.getElementById('projects-detail').classList.remove('active');
+  document.getElementById('projects-list').style.display='block';
+}
+
+document.addEventListener('click',function(e){
+  const menu=document.getElementById('mobile-menu');
+  const hamburger=document.getElementById('hamburger');
+  if(menu.classList.contains('open')&&!menu.contains(e.target)&&!hamburger.contains(e.target)){closeMenu();}
+});
 </script>
 </body>
 </html>
